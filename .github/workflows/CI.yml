@@ -18,13 +18,10 @@ jobs:
       - name: Display Xcode version
         run: xcodebuild -version
 
-      - name: Show current directory
+      - name: List available Xcode versions
         run: |
-          echo "Current directory is:"
-          pwd
-          cd EssentialFeed
-          echo "Now Current directory is:"
-          pwd
+          xcode-select -p
+          ls /Applications | grep Xcode
 
       - name: Select Xcode
         run: |
