@@ -10,7 +10,7 @@ jobs:
 
   # Второе задание: Сборка и тестирование для macOS
   build-and-test-macos:
-    runs-on: macos-14
+    runs-on: macos-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -25,8 +25,8 @@ jobs:
 
       - name: Select Xcode
         run: |
-          sudo xcode-select -s /Applications/Xcode.app
-          # sudo xcode-select -switch /Applications/Xcode_16.2.app
+          # sudo xcode-select -s /Applications/Xcode.app
+          sudo xcode-select -switch Xcode_16.2.app
           echo ">> availale xcode versions"
           xcode-select -p
           echo ">> current version"
