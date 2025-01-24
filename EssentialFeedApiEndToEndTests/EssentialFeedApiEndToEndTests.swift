@@ -35,7 +35,11 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
 
     private func getFeedResult(file: StaticString = #file, line: UInt = #line) -> LoadFeedResult? {
         let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
-        let client = URLSessionHTTPClient()
+        
+        /// directory when running tests is /Users/{your-user-name}/Library/Caches/com.apple.dt.xctest.tool
+        /// in order to prevent caching we using .ephemeral
+        
+        let client = URLSessionHTTPClient.init(session: URLSession(configuration: .ephemeral))
         let loader = RemoteFeedLoader(url: testServerURL, client: client)
         trackForMemoryLeaks(client, file: file, line: line)
         trackForMemoryLeaks(loader, file: file, line: line)
@@ -43,6 +47,7 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
         let exp = expectation(description: "Wait for load completion")
 
         var receivedResult: LoadFeedResult?
+        
         loader.load { result in
             receivedResult = result
             exp.fulfill()

@@ -1,5 +1,5 @@
 //
-//  EssentialFeedTests.swift
+//  LoadFeedFromRemoteUseCaseTests.swift
 //  EssentialFeedTests
 //
 //  Created by Denis Yaremenko on 18.01.2025.
@@ -8,7 +8,7 @@
 import XCTest
 import EssentialFeed
 
-class RemoteFeedLoaderTests: XCTestCase {
+class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
@@ -112,24 +112,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         XCTAssertTrue(capturedResults.isEmpty)
     }
-    
-    private func makeItem(
-        id: UUID,
-        description: String? = nil,
-        location: String? = nil,
-        imageURL: URL
-    ) -> (item: FeedItem, json: [String : Any]) {
-        let item = FeedItem(id: id, description: description, location: location, imageURL: imageURL)
-        let json = [
-            "id" : id.uuidString,
-            "description" : description,
-            "location" : location,
-            "image" : imageURL.absoluteString
-        ].compactMapValues { $0 }
-        
-        return (item, json)
-    }
-    
+
     // MARK: - Helpers
     
     private func makeSUT(
@@ -173,6 +156,23 @@ class RemoteFeedLoaderTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
+    }
+
+    private func makeItem(
+        id: UUID,
+        description: String? = nil,
+        location: String? = nil,
+        imageURL: URL
+    ) -> (item: FeedItem, json: [String : Any]) {
+        let item = FeedItem(id: id, description: description, location: location, imageURL: imageURL)
+        let json = [
+            "id" : id.uuidString,
+            "description" : description,
+            "location" : location,
+            "image" : imageURL.absoluteString
+        ].compactMapValues { $0 }
+        
+        return (item, json)
     }
     
     private func makeItemsJSON(_ items: [[String: Any]]) -> Data {

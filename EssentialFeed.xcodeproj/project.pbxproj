@@ -122,8 +122,8 @@
 		080EDEF321B6DA7E00813479 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
-				856584A92D40E46200CB95FF /* TestPlans */,
 				857D522C2D3E511C0040B83E /* Guide Schemas */,
+				856584A92D40E46200CB95FF /* TestPlans */,
 				857D50442D3CF0750040B83E /* Feed API */,
 				080EDEF521B6DA7E00813479 /* Info.plist */,
 				080EDF1021B6DFA200813479 /* Feed Feature */,
@@ -152,8 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				857D52772D3FBA8D0040B83E /* URLSessionHTTPClient.swift */,
-				857D521C2D3E1ADD0040B83E /* FeedItemsMapper.swift */,
 				857D521A2D3E1AA90040B83E /* HTTPClient.swift */,
+				857D521C2D3E1ADD0040B83E /* FeedItemsMapper.swift */,
 				857D50452D3CF0950040B83E /* RemoteFeedLoader.swift */,
 			);
 			path = "Feed API";
